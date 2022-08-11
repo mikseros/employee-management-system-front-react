@@ -1,4 +1,6 @@
+import React from 'react';
 import './App.css';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import FooterComponent from './components/FooterComponent';
 import HeaderComponent from './components/HeaderComponent';
 import ListEmployeeComponent from './components/ListEmployeeComponent';
@@ -6,11 +8,16 @@ import ListEmployeeComponent from './components/ListEmployeeComponent';
 function App() {
   return (
     <div>
-      <HeaderComponent/>
-        <div className="container">
-        <ListEmployeeComponent />
-        </div>
-      <FooterComponent/>
+      <Router>
+          <HeaderComponent/>
+            <div className="container">
+              <Routes>
+                <Route path="/" element={<ListEmployeeComponent />} />
+                <Route path="/employees" element={<ListEmployeeComponent />} />
+              </Routes>
+            </div>
+          <FooterComponent/>
+      </Router>
     </div>
     
   );
