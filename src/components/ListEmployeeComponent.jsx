@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import EmployeeService from '../services/EmployeeService';
+import {Link} from "react-router-dom";
 
 class ListEmployeeComponent extends Component {
+  
   constructor(props) {
     super(props)
 
@@ -20,6 +22,10 @@ class ListEmployeeComponent extends Component {
     return (
       <div>
         <h2 className='text-center'>Employees List</h2>
+        <div className='row'>
+          {/* <button className='btn btn-primary' onClick={this.addEmployee}> Add Employee</button> */}
+          <Link to="add-employee" className="btn btn-primary">Add Employee</Link>
+        </div>
         <div className='row'>
           <table className='table table-striped table bordered'>
             <thead>
