@@ -22,9 +22,9 @@ class ListEmployeeComponent extends Component {
     return (
       <div>
         <h2 className='text-center'>Employees List</h2>
-        <div className='row'>
+        <div>
           {/* <button className='btn btn-primary' onClick={this.addEmployee}> Add Employee</button> */}
-          <Link to="add-employee" className="btn btn-primary" name="add">Add Employee</Link>
+          <button className='btn btn-primary'><Link to="add-employee" className="btn btn-primary" name="add">Add Employee</Link></button>
         </div>
         <div className='row'>
           <table className='table table-striped table bordered'>
