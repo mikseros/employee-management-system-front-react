@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import EmployeeService from '../services/EmployeeService';
 import {Link} from "react-router-dom";
+import { withRouter } from '../withRouter';
 
 class ListEmployeeComponent extends Component {
   
@@ -10,6 +11,11 @@ class ListEmployeeComponent extends Component {
     this.state = {
         employees: []
     }
+    this.editEmployee = this.editEmployee.bind(this);
+  }
+
+  editEmployee(id) {
+    this.props.navigate(`/update-employee/${id}`);
   }
 
   componentDidMount() {
@@ -45,6 +51,9 @@ class ListEmployeeComponent extends Component {
                     <td> { employee.firstName} </td>
                     <td> { employee.lastName } </td>
                     <td> { employee.emailId } </td>
+                    <td>
+                      <button onClick={ () => this.editEmployee(employee.id)} className="btn btn-info">Update</button>
+                    </td>
                   </tr>
                 )
               }
@@ -57,4 +66,4 @@ class ListEmployeeComponent extends Component {
   }
 }
 
-export default ListEmployeeComponent;
+export default withRouter(ListEmployeeComponent);
