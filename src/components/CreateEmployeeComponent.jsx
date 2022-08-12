@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import {Link} from "react-router-dom";
+import EmployeeService from '../services/EmployeeService';
+import { withRouter } from '../withRouter';
 
 class CreateEmployeeComponent extends Component {
     constructor(props) {
@@ -10,6 +12,7 @@ class CreateEmployeeComponent extends Component {
             lastName: '',
             emailId: ''
         }
+        this.saveEmployee = this.saveEmployee.bind(this);
         this.changeFirstNameHandler = this.changeFirstNameHandler.bind(this);
         this.changeLastNameHandler = this.changeLastNameHandler.bind(this);
         this.changeEmailIdHandler = this.changeEmailIdHandler.bind(this);
@@ -20,6 +23,10 @@ class CreateEmployeeComponent extends Component {
         e.preventDefault();
         let employee = {firstName: this.state.firstName, lastName: this.state.lastName, emailId: this.state.emailId};
         console.log('employee => ' + JSON.stringify(employee));
+
+        EmployeeService.createEmployee(employee).then(res => {
+            this.props.navigate('/');
+        });
     }
 
     changeFirstNameHandler= (event) => {
@@ -61,9 +68,10 @@ class CreateEmployeeComponent extends Component {
                                         <input placeholder='Email Id' name='emailId' className='form-control'
                                             value={this.state.emailId} onChange={this.changeEmailIdHandler}/>
                                     </div>
+                                    <br />
                                     <button className='btn btn-success' onClick={this.saveEmployee}>Save</button>
                                     {/* <button className='btn btn-danger' onClick={this.cancel.bind(this)} style={{marginLeft: "10px"}}>Cancel</button> */}
-                                    <Link to="/" className="btn btn-primary" style={{marginLeft: "10px"}}>Cancel</Link>
+                                    <Link to="/" className="btn btn-danger" style={{marginLeft: "10px"}}>Cancel</Link>
                                 </form>
                             </div>
                         </div>
@@ -74,4 +82,4 @@ class CreateEmployeeComponent extends Component {
     }
 }
 
-export default CreateEmployeeComponent;
+export default withRouter(CreateEmployeeComponent);
