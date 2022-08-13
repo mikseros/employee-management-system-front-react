@@ -14,6 +14,7 @@ class ListEmployeeComponent extends Component {
     this.editEmployee = this.editEmployee.bind(this);
   }
 
+  // add id to the path
   editEmployee(id) {
     this.props.navigate(`/update-employee/${id}`);
   }
