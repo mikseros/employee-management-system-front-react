@@ -16,7 +16,8 @@ class ListEmployeeComponent extends Component {
 
   // add id to the path
   editEmployee(id) {
-    this.props.navigate(`/update-employee/${id}`);
+    // step 7
+    this.props.navigate(`/add-employee/${id}`);
   }
 
   componentDidMount() {
@@ -31,7 +32,8 @@ class ListEmployeeComponent extends Component {
         <h2 className='text-center'>Employees List</h2>
         <div>
           {/* <button className='btn btn-primary' onClick={this.addEmployee}> Add Employee</button> */}
-          <button className='btn btn-primary'><Link to="add-employee" className="btn btn-primary" name="add">Add Employee</Link></button>
+          {/* step 6 */}
+          <button className='btn btn-primary'><Link to="add-employee/_add" className="btn btn-primary" name="add">Add Employee</Link></button>
         </div>
         <div className='row'>
           <table className='table table-striped table bordered'>
