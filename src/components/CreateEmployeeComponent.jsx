@@ -43,7 +43,7 @@ class CreateEmployeeComponent extends Component {
         console.log('employee => ' + JSON.stringify(employee));
 
         // step 5
-        if (this.state.id == -1) {
+        if (this.state.id === '_add') {
             EmployeeService.createEmployee(employee).then(res => {
                 this.props.navigate('/');
             });
