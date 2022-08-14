@@ -15,6 +15,10 @@ class ListEmployeeComponent extends Component {
     this.deleteEmployee = this.deleteEmployee.bind(this);
   }
 
+  viewEmployee(id) {
+    this.props.navigate(`/view-employee/${id}`);
+  }
+
   // add id to the path
   editEmployee(id) {
     // step 7
